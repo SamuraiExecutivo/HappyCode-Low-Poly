@@ -1,0 +1,6 @@
+{
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "editor.insertSpaces": false,
+    "csharp.format.enable": false
+}
