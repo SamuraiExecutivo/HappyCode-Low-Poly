@@ -1,32 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
-	float vida = 100;
-	bool isAlive = true;
+    public int score;
+    public string scoreTxt;
+    public float timer;
+    public string timerTxt;
 
-	void Start () {
-		
-	}
-	
-	void Update () {
-		
-		ChecarSeEstaVivo();
-		Debug.Log("Esta Vivo: " + ChecarSeEstaVivo());
-	}
+    public Slider sliderVida;
+    public float vidaJogador;
 
-	public bool ChecarSeEstaVivo () {
+    void Start () {
+        timer = 15;
+        vidaJogador = 10;
+    }
 
-		// isAlive = (vida <= 0) ? false : true;
-		// if (vida <= 0) isAlive = false;
+    private void Update () {
+        timer -= 1 * Time.deltaTime;
+        scoreTxt = score.ToString ();
+        timerTxt = timer.ToString ("###,##");
+        print (timerTxt);
 
-		if (vida <= 0) {
-			isAlive = false;
-		} else {
-			isAlive = true;
-		}
-		return isAlive;
-	}
+    }
+
+    public void EntregaLixo (string item, string cont) {
+
+        if ((item == "reciclavel" && cont == "lixeiraReciclavel") || (item == "naoReciclavel" && cont == "LixeiraNaoReciclavel"))
+            score += 10;
+        else {
+            score -= 5;
+        }
+    }
 }
