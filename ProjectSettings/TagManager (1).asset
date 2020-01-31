@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Ground
-  - LixeiraNaoReciclavel
-  - LixeiraReciclavel
-  - LixoReciclavel
-  - LixoNaoReciclavel
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -18,10 +13,10 @@ TagManager:
   - UI
   - 
   - 
-  - LixoReciclavel
-  - LixoNaoReciclavel
-  - LixeiraReciclavel
-  - LixeiraNaoReciclavel
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

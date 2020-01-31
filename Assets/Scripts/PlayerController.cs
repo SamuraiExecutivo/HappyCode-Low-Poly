@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 		h = Input.GetAxis ("Horizontal");
 		v = Input.GetAxis ("Vertical");
 
-		if (v > 0 && gc.GetComponent<GameController> ().vidaJogador > 0) {
+		if (v != 0 && gc.GetComponent<GameController> ().vidaJogador > 0) {
 			animator.SetInteger ("estado", 1);
 		} else if (v <= 0 && gc.GetComponent<GameController> ().vidaJogador > 0) {
 			animator.SetInteger ("estado", 0);
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour {
 		h = Input.GetAxis ("Horizontal") * 2;
 		v = Input.GetAxis ("Vertical");
 
-		if (v > 0) {
+		if (v != 0) {
 			transform.Translate (new Vector3 (0, 0, v / divisorDeForca));
 		}
 

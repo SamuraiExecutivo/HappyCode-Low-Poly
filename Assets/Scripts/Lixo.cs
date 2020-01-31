@@ -7,11 +7,9 @@ public class Lixo : MonoBehaviour {
 	public GameObject controller;
 	public GameObject pegaTarget;
 	public bool pegaObj = false;
-	public bool colidiuComLixo = false;
 
 	void Start () {
 		controller = GameObject.Find ("GameController");
-		pegaTarget = GameObject.Find ("PegaTarget");
 	}
 
 	void Update () {
@@ -20,16 +18,13 @@ public class Lixo : MonoBehaviour {
 
 	void OnTriggerStay (Collider other) {
 		if (other.tag == "Player") {
-			colidiuComLixo = true;
 			PegarSoltar ();
 		} else {
-			colidiuComLixo = false;
 		}
 
 		if (!pegaObj) {
-			if (other.tag == "reciclavel" || other.tag == "naoReciclavel") {
-				controller.GetComponent<GameController> ().
-				EntregaLixo (this.tag, other.tag);
+			if (other.tag == "LixeiraReciclavel" || other.tag == "LixeiraNaoReciclavel") {
+				controller.GetComponent<GameController> ().EntregaLixo (this.tag, other.tag);
 				Destroy (this.gameObject);
 			}
 		}
@@ -37,25 +32,26 @@ public class Lixo : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other) {
 		if (other.tag == "Player") {
-			colidiuComLixo = true;
 			PegarSoltar ();
 		} else {
-			colidiuComLixo = false;
 		}
 		if (!pegaObj) {
-			if (other.tag == "reciclavel" || other.tag == "naoReciclavel") {
+			if (other.tag == "LixeiraReciclavel" || other.tag == "LixeiraNaoReciclavel") {
 				controller.GetComponent<GameController> ().EntregaLixo (this.tag, other.tag);
 				Destroy (this.gameObject);
 			}
 		}
 	}
 
-	void PegarSoltar () {
-		if (Input.GetKeyDown (KeyCode.Mouse0) && !pegaObj) {
-			if (colidiuComLixo) pegaObj = true;
-
+bool PegarSoltar () {
+		if (Input.GetKeyDown (KeyCode.Mouse0)) {
+			pegaObj = true;
+			return false;
 		}
-		if (Input.GetKeyDown (KeyCode.Mouse1)) pegaObj = false;
-
+		if (Input.GetKeyDown (KeyCode.Mouse1)) {
+			pegaObj = false;
+			return true;
+		}
+		return false;
 	}
 }
